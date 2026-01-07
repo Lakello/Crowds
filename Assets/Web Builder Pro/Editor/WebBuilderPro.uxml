@@ -1,0 +1,111 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Completed/WebGL%20Builder%20Pro/Editor/WebGLBuilderPro.uss?fileID=7433441132597879392&amp;guid=704abdd53c653d84f85ee7758cf5a8ef&amp;type=3#WebGLBuilderPro" />
+    <ui:ScrollView mode="Vertical" style="height: auto;">
+        <ui:VisualElement name="main" class="main">
+            <ui:Foldout text="Build" name="build-foldout" class="foldout main-foldout" style="display: flex; visibility: visible;">
+                <ui:VisualElement name="build-container" class="container" style="flex-grow: 1;">
+                    <ui:VisualElement name="output-container">
+                        <ui:VisualElement name="BuildNameContainer" class="row" style="flex-grow: 0; margin-top: 5px; margin-bottom: 5px;">
+                            <ui:Label text="Build Name:" enable-rich-text="false" class="read-only-label" />
+                            <ui:Label name="BuildNameLabel" text="Unable to get build name" enable-rich-text="false" tooltip="The name of the folder the build will be placed in." class="read-only-text" style="flex-shrink: 1;" />
+                            <ui:Button text="..." name="BuildNameBrowseButton" tooltip="Change the Build Name In Player Settings" class="browse-button" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="OutputPathContainer" class="row" style="flex-grow: 0; margin-top: 5px; margin-bottom: 5px;">
+                            <ui:Label text="Output Path:" enable-rich-text="false" class="read-only-label" />
+                            <ui:Label name="OutputPathLabel" text="No Valid Path Selected" enable-rich-text="false" tooltip="The folder in which the build will be placed." class="read-only-text" style="flex-shrink: 1;" />
+                            <ui:Button text="..." name="OutputPathBrowseButton" tooltip="Select a Folder to place the build." class="browse-button" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="divider" class="divider" />
+                    <ui:VisualElement name="spacer" class="spacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="build-options-container" style="flex-grow: 1;">
+                        <ui:Toggle label="Development Build (Fast)" name="DevelopmentBuildToggle" value="true" tooltip="Does not apply any optimisations, leading to faster build times, but larger build size" class="toggle">
+                            <ui:Button text="?" name="EnhancedWebGLTemplateHelpButton" tooltip="Prevents the browser from applying post processing to your mouse movements. (Recommended)" class="help-button" style="margin-right: 0;" />
+                        </ui:Toggle>
+                        <ui:Toggle label="Use Enhanced Template" name="EnhancedWebGLTemplateToggle" value="true" tooltip="Will use an advanced HTML template that is compatible with Iframes, perfect for itch.io and simmer.io" class="toggle">
+                            <ui:Button text="?" name="EnhancedWebGLTemplateHelpButton" tooltip="Prevents the browser from applying post processing to your mouse movements. (Recommended)" class="help-button" style="margin-right: 0;" />
+                        </ui:Toggle>
+                        <ui:Toggle label="Optimize For Pixel Art" name="OptimizeForPixelArtToggle" value="true" tooltip="Sharpens the image to ensure pixel art retains crisp edges. Should be disabled for 3D games." class="toggle">
+                            <ui:Button text="?" name="OptimizeForPixelArtHelpButton" tooltip="Will ignore the selected WebGL template in the build settings, and use one optimized for itch.io. (Recommended)" class="help-button" style="margin-right: 0;" />
+                        </ui:Toggle>
+                        <ui:Toggle label="Disable Mouse Acceleration" name="DisableMouseAccelerationToggle" value="true" tooltip="Removes unnatural mouse acceleration from the browser. Recommended for FPS and mouse games." class="toggle">
+                            <ui:Button text="?" name="DisableMouseAccelerationHelpButton" tooltip="Prevents the browser from applying post processing to your mouse movements. (Recommended)" class="help-button" style="margin-right: 0;" />
+                        </ui:Toggle>
+                        <ui:Toggle label="Do Not Override Player Settings" name="DoNotOverRideSettingsToggle" value="true" tooltip="For advanced users. No Player settings will be altered." class="toggle" style="display: none;">
+                            <ui:Button text="?" name="DisableMouseAccelerationHelpButton" tooltip="Prevents the browser from applying post processing to your mouse movements. (Recommended)" class="help-button" style="margin-right: 0;" />
+                        </ui:Toggle>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="divider" class="divider" />
+                    <ui:VisualElement name="IssuesContainer" style="display: flex;">
+                        <ui:Label text="Errors (2)" display-tooltip-when-elided="true" name="ErrorsLabel" class="IssueLabel" />
+                        <ui:VisualElement name="ErrorsContainer" class="ErrorsContainer">
+                            <ui:VisualElement name="WebGLBuildTargetIssue" tooltip="This asset only works for WebGL Silly!" class="IssueContainer">
+                                <ui:VisualElement class="linter-status-icon" />
+                                <ui:Label text="Build Target Not Set To WebGL" class="linter-label" />
+                                <ui:Button text="fix" focusable="true" select-word-by-double-click="false" select-line-by-triple-click="false" class="linter-button" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="NoScenesIssue" tooltip="This asset only works for WebGL Silly!" class="IssueContainer">
+                                <ui:VisualElement class="linter-status-icon" />
+                                <ui:Label text="No Scenes have been set in build settings." class="linter-label" />
+                                <ui:Button text="fix" focusable="true" select-word-by-double-click="false" select-line-by-triple-click="false" class="linter-button" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AutoGraphicsAPIWithLinearColorSpaceIssue" tooltip="Linear color space is not supported on WebGL1. Fixing this witill disable WebGL API." class="IssueContainer">
+                                <ui:VisualElement class="linter-status-icon" />
+                                <ui:Label text="Linear Color Space with WebGL1 API" class="linter-label" />
+                                <ui:Button text="fix" focusable="true" select-word-by-double-click="false" select-line-by-triple-click="false" class="linter-button" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:Label text="Warnings (4)" display-tooltip-when-elided="true" name="WarningsLabel" class="IssueLabel" style="display: none;" />
+                        <ui:VisualElement name="WarningsContainer" class="WarningsContainer" style="display: none;">
+                            <ui:VisualElement name="DataCachingIssue" class="IssueContainer">
+                                <ui:VisualElement class="linter-status-icon" />
+                                <ui:Label text="Data Caching Disabled" class="linter-label" />
+                                <ui:Button text="fix" focusable="true" select-word-by-double-click="false" select-line-by-triple-click="false" class="linter-button" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="DecompressionFallbackDisabled" class="IssueContainer">
+                                <ui:VisualElement class="linter-status-icon" />
+                                <ui:Label text="Decompression Fallback Disabled" class="linter-label" />
+                                <ui:Button text="fix" focusable="true" select-word-by-double-click="false" select-line-by-triple-click="false" class="linter-button" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="spacer" class="spacer" style="flex-grow: 1; height: 10px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="divider" class="divider" />
+                    <ui:VisualElement name="spacer" class="spacer" style="flex-grow: 1; height: 10px;" />
+                    <ui:Button text="Build" name="BuildButton" tooltip="Build your webgl project." style="min-height: 35px; -unity-font-style: normal; font-size: 14px; margin-left: 0; margin-right: 0; flex-grow: 1; height: 35px;" />
+                </ui:VisualElement>
+            </ui:Foldout>
+            <ui:Foldout text="Report" name="report-foldout" value="true" class="foldout main-foldout" style="display: none; visibility: visible;" />
+            <ui:Foldout text="Review" name="review-foldout" value="true" class="foldout main-foldout" style="display: flex; visibility: visible;">
+                <ui:VisualElement name="review-container" class="container" style="margin-bottom: 5px;">
+                    <ui:VisualElement name="BuildOutputPathContainer" class="row" style="flex-grow: 0; margin-top: 5px; margin-bottom: 5px;">
+                        <ui:Label text="Current Build:" class="read-only-label" />
+                        <ui:Label name="BuildOutputPathLabel" text="No Path Selected" enable-rich-text="false" class="read-only-text" style="flex-shrink: 1;" />
+                        <ui:Button text="..." name="BuildOutputPathBrowseButton" class="browse-button" />
+                    </ui:VisualElement>
+                    <ui:Label text="Warning: Invalid build path. The selected directory does not exist, and the build contains not index.html" name="BuildOutputPathWarning" class="read-only-label" style="white-space: normal; flex-grow: 0; flex-direction: column; align-items: auto; justify-content: flex-start; width: auto; background-color: rgb(50, 50, 50); color: rgb(159, 159, 159); -unity-text-align: middle-left; padding-right: 5px; padding-left: 10px; margin-top: 0; margin-right: 0; margin-bottom: 5px; margin-left: 0; padding-top: 5px; padding-bottom: 5px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(166, 131, 3); border-right-color: rgb(166, 131, 3); border-top-color: rgb(166, 131, 3); border-bottom-color: rgb(166, 131, 3);" />
+                    <ui:VisualElement name="divider" class="divider" style="margin-top: 0;" />
+                    <ui:VisualElement name="build-report-container" />
+                    <ui:VisualElement name="local-server-container" style="flex-direction: row; justify-content: space-between; align-items: center; display: none;">
+                        <ui:VisualElement name="local-server-status-container" class="login-status-container">
+                            <ui:VisualElement name="local-server-status-icon" class="login-status-icon" style="min-width: 10px;" />
+                            <ui:Label text="Local Server Running" name="local-server-label" class="ogin-status-label login-status-label" />
+                        </ui:VisualElement>
+                        <ui:Button text="Stop Server" name="stop-local-server-button" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="divider" class="divider" style="margin-top: 0;" />
+                    <ui:Label text="Open in Browser:" name="open-in-browser-label" style="margin-top: 10px; margin-bottom: 17px;" />
+                    <ui:VisualElement name="browsers-container" style="flex-grow: 1; margin-top: 0; margin-bottom: 0; flex-direction: row; align-items: center; justify-content: space-around; margin-right: 0; margin-left: 0; height: 40px; flex-shrink: 0;">
+                        <ui:Button text="default" name="system-browser-button" class="browser-button" />
+                        <ui:Button name="chrome-button" text="chrome" class="browser-button" />
+                        <ui:Button name="edge-button" text="edge" class="browser-button edge-button" />
+                        <ui:Button name="firefox-button" text="firefox" class="browser-button firefox-button" />
+                        <ui:Button name="opera-button" text="opera" class="browser-button opera-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:Foldout>
+            <ui:Toggle label="Advanced Options" name="AdvancedOptionsToggle" enable-rich-text="false" class="advanced-options-toggle" style="display: flex;" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+    <ui:Button text="Refresh" name="RefreshButton" style="display: none;" />
+</ui:UXML>

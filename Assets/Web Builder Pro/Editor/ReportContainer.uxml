@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/WebGL%20Builder%20Pro/Editor/ReportContainer.uss?fileID=7433441132597879392&amp;guid=77da313624fa9334c81cb4ac7de33b3d&amp;type=3#ReportContainer" />
+    <ui:VisualElement>
+        <ui:VisualElement name="tab-title" style="flex-direction: row; justify-content: space-between;">
+            <ui:Button text="Overview" display-tooltip-when-elided="true" name="tab-overview" class="tab-button" />
+            <ui:Button text="Textures" display-tooltip-when-elided="true" name="tab-textures" class="tab-button" />
+            <ui:Button text="Models" display-tooltip-when-elided="true" name="tab-models" class="tab-button" />
+            <ui:Button text="Sounds" display-tooltip-when-elided="true" name="tab-sounds" class="tab-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="overview-container" />
+        <ui:VisualElement name="texture-container" />
+        <ui:VisualElement name="models-container" />
+        <ui:VisualElement name="sounds-container" />
+    </ui:VisualElement>
+</ui:UXML>

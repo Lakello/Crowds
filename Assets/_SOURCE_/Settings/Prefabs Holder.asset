@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775fe71522ec4f2ea39b9ad5a43b3259, type: 3}
+  m_Name: Prefabs Holder
+  m_EditorClassIdentifier: Assembly-CSharp::_SOURCE_.Scripts.Game.Data.PrefabsHolder
+  <PlayerPrefab>k__BackingField: {fileID: 915062336990306586, guid: a94033b1f7887f042a3610ba491d47dd, type: 3}

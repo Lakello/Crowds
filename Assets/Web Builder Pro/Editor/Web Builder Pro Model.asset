@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049eea3af5e04dd43a1940d010c7eb64, type: 3}
+  m_Name: Web Builder Pro Model
+  m_EditorClassIdentifier: 
+  AdvancedOptions:
+    _value: 0
+  BuildName:
+    _value: Anvil v5
+  OutputParentPath:
+    _value: E:\repos\Anvil\Builds
+  IsOutputParentPathValid:
+    _value: 1
+  DesiredOutPath:
+    _value: E:\repos\Anvil\Builds\Anvil v5
+  DevelopmentBuild:
+    _value: 0
+  EnhancedWebGLTemplate:
+    _value: 1
+  OptimizeForPixelArt:
+    _value: 0
+  DisableMouseAcceleration:
+    _value: 0
+  DoNotOverRideSettings:
+    _value: 0
+  ErrorsPresent:
+    _value: 1
+  ErrorsCount:
+    _value: 1
+  IsNotWebGLBuildTarget:
+    _value: 1
+  IsNoScenes:
+    _value: 0
+  IsAutoGraphicsAPIWithLinearColorSpace:
+    _value: 0
+  WarningsPresent:
+    _value: 0
+  IsDataCaching:
+    _value: 0
+  IsDecompressionFallback:
+    _value: 0
+  IsBuildFromThisAsset:
+    _value: 0
+  CurrentSelectedBuildPath:
+    _value: 
+  DoesCurrentSelectedBuildPathExist:
+    _value: 0
+  chromeBrowserPath: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+  firefoxBrowserPath: C:\Program Files\Mozilla Firefox\firefox.exe
+  edgeBrowserPath: C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  operaBrowserPath: C:\Users\simon\AppData\Local\Programs\Opera\opera.exe
+  portNumber: 8001
+  ReportPath:
+    _value: 
+  CurrentBuildDirectory: 
+  CurrentBuildFolderWarning: 
+  DoesCurrentBuildExist: 0
