@@ -35,17 +35,27 @@ namespace _SOURCE_.Scripts.Core
 
             _systems
                 .AddModule(new UnityModule())
-                .AddService(new PrefabsService
+                
+                .AddService(new DataHolderService<PrefabsHolder>
                 {
-                    Holder = DI.Resolve<PrefabsHolder>(),
+                    Data = DI.Resolve<PrefabsHolder>(),
                 })
+                .AddService(new DataHolderService<MovementDataHolder>
+                {
+                    Data = DI.Resolve<MovementDataHolder>(),
+                }, typeof(MovementDataHolder))
+                
+                .AddSystem(new PlayerInputSystem())
+                .AddSystem(new MoveSystem())
+                
                 .AddSystem(new EventHandleSystem())
                 .AddSystem(new ResetEventsSystem())
+                
                 .Init();
 
             ref EventComponent createPlayerEvent = ref gameAspect.EventsPool.NewEntity(out _);
             createPlayerEvent.IsActive = true;
-            createPlayerEvent.Handler = new CharacterFactory();
+            createPlayerEvent.Handler = new PlayerFactory();
         }
 
         private void Update()

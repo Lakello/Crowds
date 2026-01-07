@@ -1,6 +1,7 @@
 namespace _SOURCE_.Scripts.ECS.Factories
 {
     using Aspects;
+    using Components;
     using Components.Marker;
     using Data;
     using Game.CharacterSystem;
@@ -11,7 +12,7 @@ namespace _SOURCE_.Scripts.ECS.Factories
     using UtilsModule.Other;
     using UtilsModule.Singleton;
 
-    public class CharacterFactory : IEventHandler
+    public class PlayerFactory : IEventHandler
     {
         public void HandleEvent()
         {
@@ -24,8 +25,14 @@ namespace _SOURCE_.Scripts.ECS.Factories
                 holder.PlayerPrefab, 
                 SingleAccessHolder.Instance.Get<SpawnPoint>().transform.position, Quaternion.identity);
 
-            ref CharacterComponent characterComponent = ref gameAspect.CharacterPool.NewEntity(out _);
+            ref CharacterComponent characterComponent = ref gameAspect.CharacterPool.NewEntity(out ProtoEntity playerEntity);
             characterComponent.Character = player;
+
+            gameAspect.PlayerPool.Add(playerEntity);
+            
+            ref MoveComponent moveComponent = ref gameAspect.MovePool.Add(playerEntity);
+            moveComponent.Target = player.transform;
+            moveComponent.MovementType = MovementType.Player;
         }
     }
 }

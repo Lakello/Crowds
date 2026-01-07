@@ -14,6 +14,7 @@ namespace _SOURCE_.Scripts.Core
     public class Bootstrap : MonoBehaviour, IExecuteHolder
     {
         [SerializeField] private PrefabsHolder _prefabsHolder;
+        [SerializeField] private MovementDataHolder _movementDataHolder;
 
         public ExecuteMethod Method => ExecuteMethod.Awake;
         public int Priority { get; set; }
@@ -26,6 +27,7 @@ namespace _SOURCE_.Scripts.Core
         private async UniTask Init(CancellationToken token)
         {
             DI.Register(_prefabsHolder);
+            DI.Register(_movementDataHolder);
 
             await PlatformProvider.WaitInitSDK(token);
 

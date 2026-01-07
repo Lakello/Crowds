@@ -534,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_SOURCE_.Scripts.Core.Bootstrap
   _prefabsHolder: {fileID: 11400000, guid: 8eb91402c6e0ad549b82eafbf2ed7221, type: 2}
+  _movementDataHolder: {fileID: 11400000, guid: d7bba746a8afecc47ab392d0c42a877b, type: 2}
 --- !u!1 &1211877151
 GameObject:
   m_ObjectHideFlags: 0
