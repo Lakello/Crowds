@@ -1,4 +1,4 @@
-namespace _SOURCE_.Scripts.Core.Platform
+namespace Core.Platform
 {
     using System.Threading;
     using Cysharp.Threading.Tasks;

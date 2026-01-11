@@ -1,18 +1,26 @@
-namespace _SOURCE_.Scripts.ECS.Aspects
+namespace ECS.Aspects
 {
-    using Components;
-    using Components.Marker;
-    using Components.Markers;
+    using Authoring;
+    using Components.Game;
+    using Components.Game.Markers;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
 
     public class GameAspect : ProtoAspectInject
     {
+        public ProtoPool<FactoryComponent> FactoryPool;
+        public ProtoPool<TimerComponent> TimerPool;
+        public ProtoPool<EntityHolderComponent> SpawnedEntityHolderPool;
+
+        public ProtoPool<AIMarker> AiPool;
+        
         public ProtoPool<CharacterComponent> CharacterPool;
-        public ProtoPool<Player> PlayerPool;
-        
+        public ProtoPool<PlayerMarker> PlayerPool;
+
+        public ProtoPool<HealthComponent> HealthPool;
+
         public ProtoPool<MoveComponent> MovePool;
-        
-        public ProtoPool<EventComponent> EventsPool;
+
+        public ProtoPool<EventHandlerComponent> EventsPool;
     }
 }

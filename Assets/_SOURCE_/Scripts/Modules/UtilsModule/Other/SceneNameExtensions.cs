@@ -1,9 +1,9 @@
 #if SCENE_NAME_GENERATED
-namespace _GameResources.Scripts.Network.SceneSystem
+namespace UtilsModule.Other
 {
     using System;
     using System.Collections.Generic;
-    using global::SceneSystem;
+    using Generated;
     using ZLinq;
 
     public static class SceneNameExtensions

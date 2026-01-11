@@ -1,7 +1,8 @@
-namespace _GameResources.Scripts.Tools
+namespace UtilsModule.Other
 {
     using System;
     using System.Collections.Generic;
+    using Execute.Mode;
     using Sirenix.OdinInspector;
     using UnityEngine;
     using UtilsModule.Execute;

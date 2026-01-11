@@ -1,20 +1,20 @@
-namespace _SOURCE_.Scripts.Core
+namespace Core
 {
     using System.Threading;
     using Cysharp.Threading.Tasks;
     using Game.Data;
     using Platform;
-    using SceneSystem;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UtilsModule.Execute;
     using UtilsModule.Execute.Interfaces;
+    using UtilsModule.Execute.Mode;
     using UtilsModule.Other;
+    using UtilsModule.Other.Generated;
 
     public class Bootstrap : MonoBehaviour, IExecuteHolder
     {
-        [SerializeField] private PrefabsHolder _prefabsHolder;
-        [SerializeField] private MovementDataHolder _movementDataHolder;
+        [SerializeField] private GameConfig _gameConfig;
 
         public ExecuteMethod Method => ExecuteMethod.Awake;
         public int Priority { get; set; }
@@ -26,8 +26,8 @@ namespace _SOURCE_.Scripts.Core
 
         private async UniTask Init(CancellationToken token)
         {
-            DI.Register(_prefabsHolder);
-            DI.Register(_movementDataHolder);
+            DI.Register(_gameConfig);
+            DI.Register(new GameInput());
 
             await PlatformProvider.WaitInitSDK(token);
 

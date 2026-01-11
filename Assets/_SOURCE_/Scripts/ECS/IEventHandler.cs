@@ -1,4 +1,4 @@
-namespace _SOURCE_.Scripts.ECS.Data
+namespace ECS
 {
     public interface IEventHandler
     {

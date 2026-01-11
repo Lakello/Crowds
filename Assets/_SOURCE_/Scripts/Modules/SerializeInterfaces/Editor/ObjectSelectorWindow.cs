@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEditor;
-using UnityEditor.UIElements;
-using UnityEngine;
-using UnityEngine.UIElements;
-using Object = UnityEngine.Object;
-
-namespace AYellowpaper.Editor
+namespace SerializeInterfaces.Editor
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using UIElements;
+    using UnityEditor;
+    using UnityEditor.UIElements;
+    using UnityEngine;
+    using UnityEngine.UIElements;
+    using Object = UnityEngine.Object;
+    using Tab = UIElements.Tab;
+
     internal class ObjectSelectorWindow : EditorWindow
     {
         public class ItemInfo

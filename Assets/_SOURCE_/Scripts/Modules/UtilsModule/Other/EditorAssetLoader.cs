@@ -1,4 +1,4 @@
-namespace _GameResources.Scripts.Tools
+namespace UtilsModule.Other
 {
     using System.Collections.Generic;
     using UnityEditor;

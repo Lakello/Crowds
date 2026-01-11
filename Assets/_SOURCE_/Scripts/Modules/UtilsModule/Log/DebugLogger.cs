@@ -1,4 +1,4 @@
-namespace _GameResources.Scripts.Modules.UtilsModule.Core.Log
+namespace UtilsModule.Log
 {
 	using UnityEngine;
 

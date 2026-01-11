@@ -1,4 +1,4 @@
-namespace UtilsModule.Execute
+namespace UtilsModule.Execute.Mode
 {
 	using System;
 

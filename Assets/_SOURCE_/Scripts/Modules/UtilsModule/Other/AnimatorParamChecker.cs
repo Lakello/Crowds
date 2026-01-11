@@ -1,8 +1,7 @@
-using UnityEngine;
-
-namespace TowerOfHell.Tools
+namespace UtilsModule.Other
 {
 	using System.Collections.Generic;
+	using UnityEngine;
 
 	public class AnimatorParamChecker
 	{

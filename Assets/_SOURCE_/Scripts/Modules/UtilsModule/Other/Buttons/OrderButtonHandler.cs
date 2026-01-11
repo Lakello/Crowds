@@ -1,4 +1,4 @@
-namespace UtilsModule.Other
+namespace UtilsModule.Other.Buttons
 {
 	using System.Threading;
 	using Cysharp.Threading.Tasks;

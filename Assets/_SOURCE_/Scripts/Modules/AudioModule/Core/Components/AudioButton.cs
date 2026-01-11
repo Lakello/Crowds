@@ -1,9 +1,9 @@
-using AudioModule.Extensions;
-using UnityEngine;
-using UnityEngine.UI;
-
-namespace AudioModule
+namespace AudioModule.Components
 {
+	using AudioModule.Extensions;
+	using UnityEngine;
+	using UnityEngine.UI;
+
 	[RequireComponent(typeof(Button))]
 	public class AudioButton : MonoBehaviour
 	{

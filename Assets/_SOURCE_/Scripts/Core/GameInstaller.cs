@@ -1,22 +1,25 @@
-namespace _SOURCE_.Scripts.Core
+namespace Core
 {
     using ECS.Aspects;
-    using ECS.Components;
-    using ECS.Data.Services;
+    using ECS.Extensions;
     using ECS.Factories;
-    using ECS.Systems;
+    using ECS.Services;
+    using ECS.Systems.Game;
+    using Game.CharacterSystem.Data;
     using Game.Data;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Leopotam.EcsProto.Unity;
     using UnityEngine;
     using UtilsModule.Execute;
     using UtilsModule.Execute.Interfaces;
+    using UtilsModule.Execute.Mode;
     using UtilsModule.Other;
 
     public class GameInstaller : MonoBehaviour, IExecuteHolder
     {
-        private ProtoWorld _world;
-        private IProtoSystems _systems;
+        private ProtoWorld _mainWorld;
+        private IProtoSystems _mainSystems;
 
         public ExecuteMethod Method => ExecuteMethod.Awake;
         public int Priority { get; set; }
@@ -28,48 +31,76 @@ namespace _SOURCE_.Scripts.Core
 
         private void Init()
         {
+            InitMainWorld();
+        }
+
+        private void InitMainWorld()
+        {
             GameAspect gameAspect = new GameAspect();
-            _world = new ProtoWorld(gameAspect);
+            _mainWorld = new ProtoWorld(gameAspect);
 
-            _systems = new ProtoSystems(_world);
+            _mainSystems = new ProtoSystems(_mainWorld);
 
-            _systems
+            _mainSystems
                 .AddModule(new UnityModule())
-                
-                .AddService(new DataHolderService<PrefabsHolder>
-                {
-                    Data = DI.Resolve<PrefabsHolder>(),
-                })
-                .AddService(new DataHolderService<MovementDataHolder>
-                {
-                    Data = DI.Resolve<MovementDataHolder>(),
-                }, typeof(MovementDataHolder))
-                
-                .AddSystem(new PlayerInputSystem())
-                .AddSystem(new MoveSystem())
-                
-                .AddSystem(new EventHandleSystem())
-                .AddSystem(new ResetEventsSystem())
-                
-                .Init();
+                .AddModule(new AutoInjectModule());
 
-            ref EventComponent createPlayerEvent = ref gameAspect.EventsPool.NewEntity(out _);
-            createPlayerEvent.IsActive = true;
-            createPlayerEvent.Handler = new PlayerFactory();
+            AddDependencies();
+            AddEvents();
+            AddSystems();
+
+            _mainSystems.Init();
+
+            PlayerFactory.Create(gameAspect, _mainSystems.Service<CharacterDataHolder>().GetData(UnitType.Player));
+
+            return;
+
+            void AddDependencies()
+            {
+                var gameConfig = DI.Resolve<GameConfig>();
+
+                _mainSystems
+                    .AddService(gameConfig)
+                    .AddService(DI.Resolve<GameInput>())
+                    .AddService(gameConfig.PrefabsHolder)
+                    .AddService(gameConfig.CharacterDataHolder)
+                    .AddService(gameConfig.HealthBarDataHolder)
+                    .AddService(new CharacterPoolService())
+                    .InitHere<CharacterPoolService>();
+            }
+
+            void AddEvents()
+            {
+                _mainSystems
+                    .AddService(new DeadEventHandler());
+            }
+
+            void AddSystems()
+            {
+                _mainSystems
+                    .AddSystem(new FactorySystem())
+                    .AddSystem(new PlayerInputSystem())
+                    .AddSystem(new MoveSystem())
+                    .AddSystem(new EventHandleSystem())
+                    .AddSystem(new EventResetSystem())
+                    .AddSystem(new TimerSystem())
+                    .AddSystem(new HealthViewSystem())
+                    .AddSystem(new DisposeSystem());
+            }
         }
 
         private void Update()
         {
-            _systems?.Run();
+            _mainSystems?.Run();
         }
 
         private void OnDestroy()
         {
-            _systems?.Destroy();
-            _systems = null;
+            _mainSystems?.Destroy();
+            _mainSystems = null;
 
-            _world?.Destroy();
-            _world = null;
+            _mainWorld?.Destroy();
+            _mainWorld = null;
         }
     }
 }

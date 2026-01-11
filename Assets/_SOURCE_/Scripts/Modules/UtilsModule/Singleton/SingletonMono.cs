@@ -8,6 +8,8 @@ using UtilsModule.Other;
 
 namespace UtilsModule.Singleton
 {
+	using Execute.Mode;
+
 	public enum SingletonMode
 	{
 		Global,

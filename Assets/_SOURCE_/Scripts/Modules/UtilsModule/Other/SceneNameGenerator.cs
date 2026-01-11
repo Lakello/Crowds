@@ -1,20 +1,17 @@
 #if UNITY_EDITOR
-namespace _GameResources.Scripts.Network.SceneSystem.Editor
+namespace UtilsModule.Other
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using Newtonsoft.Json;
+    using UnityEditor;
+    using UnityEngine;
+    using UnityEngine.UIElements;
+
     namespace SceneSystem.Editor
     {
-        using System;
-        using System.Collections.Generic;
-        using System.IO;
-        using System.Linq;
-        using _SOURCE_.Scripts.Modules.UtilsModule.Other;
-        using Newtonsoft.Json;
-        using Tools.Editor;
-        using UnityEditor;
-        using UnityEditor.Graphs;
-        using UnityEngine;
-        using UnityEngine.UIElements;
-
         public class SceneNameGenerator : EditorWindow
         {
             private const string SceneNameDefine = "SCENE_NAME_GENERATED";

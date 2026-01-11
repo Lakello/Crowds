@@ -1,8 +1,7 @@
-namespace _SOURCE_.Scripts.Core.Platform
+namespace Core.Platform
 {
     using System.Threading;
     using Cysharp.Threading.Tasks;
-    using UnityEngine;
     using YG;
 
     public class YandexSDKInitWaiter : ISDKInitWaiter

@@ -1,38 +1,30 @@
-namespace _SOURCE_.Scripts.ECS.Factories
+namespace ECS.Factories
 {
     using Aspects;
-    using Components;
-    using Components.Marker;
-    using Data;
+    using Authoring.Helpers;
     using Game.CharacterSystem;
+    using Game.CharacterSystem.Data;
     using Game.Data;
     using Leopotam.EcsProto;
-    using Leopotam.EcsProto.Unity;
     using UnityEngine;
     using UtilsModule.Other;
     using UtilsModule.Singleton;
 
-    public class PlayerFactory : IEventHandler
+    public class PlayerFactory
     {
-        public void HandleEvent()
+        public static void Create(GameAspect gameAspect, CharacterData characterData)
         {
-            ProtoWorld world = ProtoUnityWorlds.Get();
-            GameAspect gameAspect = (GameAspect)world.Aspect(typeof(GameAspect));
-
-            PrefabsHolder holder = DI.Resolve<PrefabsHolder>();
+            PrefabsHolder holder = DI.Resolve<GameConfig>().PrefabsHolder;
 
             Character player = Object.Instantiate(
-                holder.PlayerPrefab, 
+                holder.PlayerPrefab,
                 SingleAccessHolder.Instance.Get<SpawnPoint>().transform.position, Quaternion.identity);
 
-            ref CharacterComponent characterComponent = ref gameAspect.CharacterPool.NewEntity(out ProtoEntity playerEntity);
-            characterComponent.Character = player;
+            gameAspect.PlayerPool.NewEntity(out ProtoEntity playerEntity);
 
-            gameAspect.PlayerPool.Add(playerEntity);
-            
-            ref MoveComponent moveComponent = ref gameAspect.MovePool.Add(playerEntity);
-            moveComponent.Target = player.transform;
-            moveComponent.MovementType = MovementType.Player;
+            playerEntity.CreateCharacter(gameAspect.CharacterPool, player);
+            playerEntity.CreateMove(gameAspect.MovePool, player.transform, characterData);
+            playerEntity.CreateHealth(gameAspect.HealthPool, characterData);
         }
     }
 }

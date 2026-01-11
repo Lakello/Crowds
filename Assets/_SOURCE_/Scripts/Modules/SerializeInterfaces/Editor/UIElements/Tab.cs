@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
-
-namespace AYellowpaper.Editor
+﻿namespace SerializeInterfaces.Editor.UIElements
 {
+	using UnityEngine.UIElements;
+
 	internal class Tab : Toggle
 	{
 		public Tab(string text) : base()

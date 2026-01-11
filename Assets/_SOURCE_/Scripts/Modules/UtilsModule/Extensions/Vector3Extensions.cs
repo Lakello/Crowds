@@ -1,7 +1,7 @@
-using UnityEngine;
-
-namespace TowerOfHell.Tools
+namespace UtilsModule.Extensions
 {
+	using UnityEngine;
+
 	public static class Vector3Extensions
 	{
 		public static void SetAll(this Vector3 vector, ref Vector3 value)

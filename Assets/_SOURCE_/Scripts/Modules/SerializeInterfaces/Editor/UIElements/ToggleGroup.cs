@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
-
-namespace AYellowpaper.Editor
+﻿namespace SerializeInterfaces.Editor.UIElements
 {
+	using System;
+	using System.Collections.Generic;
+	using UnityEngine.UIElements;
+
 	internal class ToggleGroup
 	{
 		private List<Toggle> _toggles = new List<Toggle>();

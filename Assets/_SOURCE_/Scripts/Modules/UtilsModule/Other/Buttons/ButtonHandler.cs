@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.UI;
-
-namespace UtilsModule.Other
+namespace UtilsModule.Other.Buttons
 {
+	using UnityEngine;
+	using UnityEngine.UI;
+
 	[RequireComponent(typeof(Button))]
 	public abstract class ButtonHandler : MonoBehaviour
 	{

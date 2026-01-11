@@ -1,8 +1,8 @@
-using AudioModule.Extensions;
-using UnityEngine;
-
-namespace AudioModule
+namespace AudioModule.Components
 {
+    using AudioModule.Extensions;
+    using UnityEngine;
+
     public class AudioOnEnable : MonoBehaviour
     {
         [SerializeField] private AudioID _id;

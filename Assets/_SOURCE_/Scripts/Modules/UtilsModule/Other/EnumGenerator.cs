@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-namespace _GameResources.Scripts.Tools.Editor
+namespace UtilsModule.Other
 {
     using System.IO;
     using System.Linq;

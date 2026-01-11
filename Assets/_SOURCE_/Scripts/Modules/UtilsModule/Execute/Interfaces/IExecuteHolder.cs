@@ -1,5 +1,7 @@
 namespace UtilsModule.Execute.Interfaces
 {
+	using Mode;
+
 	public interface IExecuteHolder
 	{
 		public ExecuteMethod Method { get; }

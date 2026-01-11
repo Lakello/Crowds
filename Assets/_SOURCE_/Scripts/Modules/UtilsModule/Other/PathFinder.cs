@@ -1,4 +1,4 @@
-namespace _SOURCE_.Scripts.Modules.UtilsModule.Other
+namespace UtilsModule.Other
 {
     using System.IO;
     using UnityEditor;

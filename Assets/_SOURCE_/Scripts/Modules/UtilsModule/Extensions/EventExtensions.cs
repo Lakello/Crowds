@@ -1,4 +1,4 @@
-namespace _GameResources.Scripts.Modules.UtilsModule.Core.Extensions
+namespace UtilsModule.Extensions
 {
 	using System;
 	using System.Threading;

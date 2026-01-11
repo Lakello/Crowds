@@ -1,27 +1,18 @@
-namespace _SOURCE_.Scripts.ECS.Systems
+namespace ECS.Systems.Game
 {
     using Aspects;
-    using Components;
+    using Components.Game;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
 
-    public class EventHandleSystem : IProtoInitSystem, IProtoRunSystem
+    public class EventHandleSystem : IProtoRunSystem
     {
-        private ProtoIt _eventsIt;
-        private GameAspect _gameAspect;
-        
-        public void Init(IProtoSystems systems)
+        [DI] private GameAspect _gameAspect;
+
+        [DI] private ProtoIt _eventsIt = new ProtoIt(new[]
         {
-            ProtoWorld world = systems.World();
-
-            _gameAspect = (GameAspect)world.Aspect(typeof(GameAspect));
-
-            _eventsIt = new ProtoIt(new[]
-            {
-                typeof(EventComponent),
-            });
-            
-            _eventsIt.Init(world);
-        }
+            typeof(EventHandlerComponent),
+        });
 
         public void Run()
         {

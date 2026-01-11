@@ -1,8 +1,8 @@
 namespace MessageModule
 {
-	using _GameResources.Scripts.Modules.UtilsModule.Core.Log;
 	using R3;
 	using UnityEngine.Scripting;
+	using UtilsModule.Log;
 
 	public static partial class MessageExtensions
 	{

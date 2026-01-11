@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using UnityEditor;
-using UnityEngine;
-
-namespace AYellowpaper.Editor
+﻿namespace SerializeInterfaces.Editor
 {
+    using System;
+    using System.Linq;
+    using System.Text;
+    using UnityEditor;
+    using UnityEngine;
+
     internal static class InterfaceReferenceUtility
     {
         private const float _helpBoxHeight = 24;

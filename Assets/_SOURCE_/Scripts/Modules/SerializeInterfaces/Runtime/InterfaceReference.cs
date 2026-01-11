@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace AYellowpaper
+namespace SerializeInterfaces.Runtime
 {
+	using UnityEngine;
+
 	/// <summary>
 	/// Serializes a UnityEngine.Object with the given interface. Adds a nice decorator in the inspector as well and a custom object selector.
 	/// </summary>
 	/// <typeparam name="TInterface">The interface.</typeparam>
 	/// <typeparam name="UObject">The UnityEngine.Object.</typeparam>
 	[System.Serializable]
-	public class InterfaceReference<TInterface, UObject> where UObject : Object where TInterface : class
+	public class InterfaceReference<TInterface, UObject> 
+		where UObject : Object 
+		where TInterface : class
 	{
 		[SerializeField]
 		[HideInInspector]
@@ -62,7 +62,8 @@ namespace AYellowpaper
 	/// </summary>
 	/// <typeparam name="TInterface">The interface.</typeparam>
 	[System.Serializable]
-	public class InterfaceReference<TInterface> : InterfaceReference<TInterface, Object> where TInterface : class
+	public class InterfaceReference<TInterface> : InterfaceReference<TInterface, Object>
+		where TInterface : class
 	{
 		public InterfaceReference(TInterface @interface) : base(@interface)
 		{

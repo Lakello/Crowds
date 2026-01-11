@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using UnityEditor;
-using AYellowpaper;
-using System.Collections.Generic;
-using System;
-
-namespace AYellowpaper.Editor
+﻿namespace SerializeInterfaces.Editor
 {
+	using System;
+	using Runtime;
+	using UnityEditor;
+	using UnityEngine;
+
 	[CustomPropertyDrawer(typeof(RequireInterfaceAttribute))]
 	public class RequireInterfaceAttributeDrawer : PropertyDrawer
 	{

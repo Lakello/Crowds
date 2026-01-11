@@ -17,5 +17,7 @@ MonoBehaviour:
     path: Assets/_SOURCE_/Scenes/Initialize.unity
   - name: Game
     path: Assets/_SOURCE_/Scenes/Game.unity
+  - name: InfiniteWorld
+    path: Assets/Samples/A_ Pathfinding Project/5.2.4/Example scenes/Scenes/InfiniteWorld/InfiniteWorld.unity
   - name: TestScene
     path: Assets/!GameResources/Scenes/TestScene.unity

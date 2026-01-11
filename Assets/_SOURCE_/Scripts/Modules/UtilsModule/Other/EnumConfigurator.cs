@@ -1,7 +1,6 @@
-namespace _GameResources.Scripts.Tools
+namespace UtilsModule.Other
 {
     using System;
-    using Editor;
     using Sirenix.OdinInspector;
     using UnityEngine;
 

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775fe71522ec4f2ea39b9ad5a43b3259, type: 3}
   m_Name: Prefabs Holder
   m_EditorClassIdentifier: Assembly-CSharp::_SOURCE_.Scripts.Game.Data.PrefabsHolder
+  _locationPrefabs:
+  - ObjectType: 0
+    Prefab: {fileID: 7371582025611301023, guid: 19d5254f24faaf044a8a8758d89a9bfe, type: 3}
   <PlayerPrefab>k__BackingField: {fileID: 915062336990306586, guid: a94033b1f7887f042a3610ba491d47dd, type: 3}
+  <ChunkBasePrefab>k__BackingField: {fileID: 8157047283019670996, guid: f2acafa73435f8c47977c43ac52441ec, type: 3}

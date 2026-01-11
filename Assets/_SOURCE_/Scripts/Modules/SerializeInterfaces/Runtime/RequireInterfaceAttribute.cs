@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace AYellowpaper
+﻿namespace SerializeInterfaces.Runtime
 {
+	using System;
+	using UnityEngine;
+
 	[AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 	public class RequireInterfaceAttribute : PropertyAttribute
 	{

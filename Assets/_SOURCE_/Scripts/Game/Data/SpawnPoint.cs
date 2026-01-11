@@ -1,4 +1,4 @@
-namespace _SOURCE_.Scripts.Game.Data
+namespace Game.Data
 {
     using System;
     using UnityEngine;
