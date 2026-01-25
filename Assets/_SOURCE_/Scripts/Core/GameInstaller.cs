@@ -80,6 +80,7 @@ namespace Core
                 _mainSystems
                     .AddSystem(new FactorySystem())
                     .AddSystem(new PlayerInputSystem())
+                    .AddSystem(new AIInputSystem())
                     .AddSystem(new MoveSystem())
                     .AddSystem(new EventHandleSystem())
                     .AddSystem(new EventResetSystem())

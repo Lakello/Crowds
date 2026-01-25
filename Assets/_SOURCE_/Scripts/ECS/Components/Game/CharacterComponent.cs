@@ -1,10 +1,13 @@
 namespace ECS.Components.Game
 {
     using global::Game.CharacterSystem;
+    using UnityEngine;
 
     public struct CharacterComponent
     {
         public Character Character;
+        
+        public Vector3 Position => Character?.transform.position ?? Vector3.zero;
     }
 }
 
