@@ -6,6 +6,7 @@ namespace Game.Data
     [CreateAssetMenu(fileName = "GameConfig", menuName = "Data/GameConfig")]
     public class GameConfig : ScriptableObject
     {
+        [field: SerializeField] public int GridSize { get; private set; }
         [field: SerializeField] public PrefabsHolder PrefabsHolder { get; private set; }
         [field: SerializeField] public CharacterDataHolder CharacterDataHolder { get; private set; }
         [field: SerializeField] public HealthBarDataHolder HealthBarDataHolder { get; private set; }

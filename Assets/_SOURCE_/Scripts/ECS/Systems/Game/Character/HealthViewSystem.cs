@@ -14,11 +14,11 @@ namespace ECS.Systems.Game
         [DIUnity("Camera")] private readonly Camera _camera;
         [DIUnity("HealthBars")] private readonly BatchedHealthBarsGraphic _graphic;
 
-        [DI] private GameAspect _gameAspect;
+        [DI] private readonly GameAspect _gameAspect;
 
-        [DI] private HealthBarDataHolder _dataHolder;
+        [DI] private readonly HealthBarDataHolder _dataHolder;
 
-        [DI] private ProtoIt _healthIt = new ProtoIt(It.Inc<CharacterComponent, HealthComponent>());
+        [DI] private readonly ProtoIt _healthIt = new ProtoIt(It.Inc<CharacterComponent, HealthComponent>());
 
         public void Run()
         {
@@ -44,7 +44,7 @@ namespace ECS.Systems.Game
                 ref CharacterComponent characterComponent = ref _gameAspect.CharacterPool.Get(entity);
                 ref HealthComponent healthComponent = ref _gameAspect.HealthPool.Get(entity);
 
-                Vector3 worldPosition = characterComponent.Character.transform.position + Vector3.up * healthComponent.HeightWorldOffset;
+                Vector3 worldPosition = characterComponent.Position + Vector3.up * healthComponent.HeightWorldOffset;
 
                 float dist = Vector3.Distance(camPos, worldPosition);
                 if (dist > _dataHolder.MaxDistance)

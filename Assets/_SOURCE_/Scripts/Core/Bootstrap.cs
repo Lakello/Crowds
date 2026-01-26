@@ -2,6 +2,7 @@ namespace Core
 {
 	using System.Threading;
 	using Cysharp.Threading.Tasks;
+	using ECS;
 	using Game.Data;
 	using Platform;
 	using SceneSystem;
@@ -28,6 +29,8 @@ namespace Core
 		{
 			DI.Register(_gameConfig);
 			DI.Register(new GameInput());
+			
+			CharacterLinker.Create();
 
 			await PlatformProvider.WaitInitSDK(token);
 

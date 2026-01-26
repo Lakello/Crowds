@@ -5,6 +5,7 @@ namespace ECS.Aspects
     using Components.Game.Markers;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
+    using Skills;
 
     public class GameAspect : ProtoAspectInject
     {
@@ -22,5 +23,7 @@ namespace ECS.Aspects
         public ProtoPool<MoveComponent> MovePool;
 
         public ProtoPool<EventHandlerComponent> EventsPool;
+        
+        public ProtoPool<SphereCastDetector> SphereCastPool;
     }
 }

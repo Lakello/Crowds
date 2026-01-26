@@ -4,6 +4,8 @@ namespace Core
     using ECS.Extensions;
     using ECS.Factories;
     using ECS.Services;
+    using ECS.Skills;
+    using ECS.Skills.Systems;
     using ECS.Systems.Game;
     using Game.CharacterSystem.Data;
     using Game.Data;
@@ -66,6 +68,7 @@ namespace Core
                     .AddService(gameConfig.CharacterDataHolder)
                     .AddService(gameConfig.HealthBarDataHolder)
                     .AddService(new CharacterPoolService())
+                    .AddService(new NeighborGridXZ(gameConfig.GridSize))
                     .InitHere<CharacterPoolService>();
             }
 
@@ -82,6 +85,9 @@ namespace Core
                     .AddSystem(new PlayerInputSystem())
                     .AddSystem(new AIInputSystem())
                     .AddSystem(new MoveSystem())
+                    .AddSystem(new CharacterPositionUpdateSystem())
+                    .AddSystem(new NeighborGridSystem())
+                    .AddSystem(new SphereCastSystem())
                     .AddSystem(new EventHandleSystem())
                     .AddSystem(new EventResetSystem())
                     .AddSystem(new TimerSystem())

@@ -1,13 +1,10 @@
 namespace ECS.Components.Game
 {
-    using global::Game.CharacterSystem;
     using UnityEngine;
 
     public struct CharacterComponent
     {
-        public Character Character;
-        
-        public Vector3 Position => Character?.transform.position ?? Vector3.zero;
+        public Vector3 Position;
     }
 }
 
@@ -16,6 +13,7 @@ namespace ECS.Authoring.Helpers
     using Components.Game;
     using Game.CharacterSystem;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
 
     public static partial class CreateComponentHelper
     {
@@ -25,7 +23,8 @@ namespace ECS.Authoring.Helpers
             Character character)
         {
             ref CharacterComponent characterComponent = ref pool.Add(entity);
-            characterComponent.Character = character;
+
+            pool.World().PackEntity(entity).Register(character);
             
             return ref characterComponent;
         }
